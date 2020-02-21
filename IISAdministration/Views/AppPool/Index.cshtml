@@ -1,0 +1,42 @@
+﻿@using IISAdministration.Models.JsonModels;
+@{
+    ViewData["Title"] = "Application Pools";
+    AppPoolJsonData appPools = ViewBag.AppPools;
+    string statusClass;
+}
+
+<div class="row">
+    <h3>@ViewData["Title"]</h3>
+</div>
+
+<div class="row no-gutters pt-3">
+    <div class="col-sm-5"><strong>Name</strong></div>
+    <div class="col-sm-4"><strong>Status</strong></div>
+    <div class="col-sm-3"></div>
+</div>
+<ul class="list-group list-group-flush">
+    @foreach (AppPoolJson pool in appPools.Data) {
+        if (pool.Name.Contains(".NET")) { continue; }
+        statusClass = pool.Status.Equals("started") ? "text-success" : "text-danger";
+            <li class="list-group-item pl-0 pr-0">
+                <div class="row no-gutters">
+                    <div class="col-sm-5">@pool.Name</div>
+                    <div class="col-sm-4 @statusClass">@pool.Status</div>
+                    <div class="col-sm-3 d-flex justify-content-end">
+                        <a class="btn btn-success btn-sm mr-1" role="button"
+                            asp-controller="AppPool"
+                            asp-action="StartAppPool" 
+                            asp-route-id="@pool.Id"
+                            asp-route-srvId="@ViewBag.ServerId">Start</a>
+                        <a class="btn btn-danger btn-sm" role="button"
+                            asp-controller="AppPool"
+                            asp-action="StopAppPool" 
+                            asp-route-id="@pool.Id"
+                            asp-route-srvId="@ViewBag.ServerId">Stop</a>
+                    </div>
+                </div>
+            </li>
+        }
+</ul>
+<br />
+<br />

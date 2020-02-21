@@ -1,0 +1,100 @@
+﻿@using IISAdministration.Models.JsonModels;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = ViewBag.Server.Name;
+    WebsiteJsonData websites = ViewBag.Websites;
+    ViewBag.ServerJson = JsonConvert.SerializeObject(ViewBag.Server);
+}
+
+<div class="row">
+    <h3>@ViewData["Title"]</h3>
+</div>
+<div class="row pt-3 pb-3">
+    <div class="col-sm-8 m-0 p-0">
+        <h4>Monitoring</h4>
+    </div>
+    <div class="col-sm-4 d-flex justify-content-end m-0 p-0">
+        <a class="btn btn-primary mr-1" asp-controller="AppPool" asp-action="Index" asp-route-id="@ViewBag.Server.ServerId">View Application Pools</a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#websitesCollapse" role="button">Toggle Site List</a>
+    </div>
+</div>
+<div class="collapse" id="websitesCollapse">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Application Pool</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ string statusClass = string.Empty; }
+            @foreach (WebsiteJson website in websites.Data)
+            {
+                statusClass = website.Running ? "text-success" : "text-danger";
+                <tr>
+                    <td>@Html.ActionLink(website.Name, "Website", "Websites", new { serverId = ViewBag.Server.ServerId, id = website.Id })</td>
+                    <td class="@statusClass">@website.Status</td>
+                    <td>@website.AppPool.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="col-12 m-0 p-0">
+    <div class="row">
+        <div class="col-sm-6 m-0 p-0 pr-1 pb-1">
+            <div class="card">
+                <div class="card-header">
+                    Memory
+                </div>
+                <div class="card-body">
+                    <canvas id="memoryChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 m-0 p-0 pb-1">
+            <div class="card">
+                <div class="card-header">
+                    CPU
+                </div>
+                <div class="card-body">
+                    <canvas id="cpuChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 m-0 p-0 pr-1">
+            <div class="card">
+                <div class="card-header">
+                    Requests
+                </div>
+                <div class="card-body">
+                    <canvas id="requestsChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 m-0 p-0">
+            <div class="card">
+                <div class="card-header">
+                    Network
+                </div>
+                <div class="card-body">
+                    <canvas id="networkChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+@section Scripts {
+
+    <script type="text/javascript">
+        var server = JSON.parse('@Html.Raw(ViewBag.ServerJson)');
+    </script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/chartjs/Chart.js"></script>
+    <script src="~/js/poll_server.js"></script>
+}

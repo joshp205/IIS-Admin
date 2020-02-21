@@ -1,0 +1,26 @@
+﻿@model IISAdministration.Models.Server
+@{
+    ViewData["Title"] = "Edit Server";
+    int id = ViewBag.ServerId;
+}
+
+<div class="col-12">
+    <h4>@ViewData["Title"]</h4>
+    <hr />
+    <form class="form" asp-action="Edit" asp-controller="Servers">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" name="name" placeholder="Enter A Name For The Server" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Url"></label>
+            <input asp-for="Url" class="form-control" name="url" placeholder="Enter Server Address" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Token"></label>
+            <input asp-for="Token" class="form-control" name="token" placeholder="Enter Token" />
+        </div>
+        <input type="hidden" name="id" value="@id" />
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

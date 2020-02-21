@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>4bd56e0f-b42c-44d4-b3ec-69d15ef5d08d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190509161238_MetricsAddition.cs" />
+    <Compile Remove="Migrations\20190509161238_MetricsAddition.Designer.cs" />
+    <Compile Remove="Migrations\20190513163233_Metrics.cs" />
+    <Compile Remove="Migrations\20190513163233_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513165333_Metrics.cs" />
+    <Compile Remove="Migrations\20190513165333_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513165701_Metrics.cs" />
+    <Compile Remove="Migrations\20190513165701_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513165944_Metrics.cs" />
+    <Compile Remove="Migrations\20190513165944_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513170222_Metrics.cs" />
+    <Compile Remove="Migrations\20190513170222_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513171126_Metrics.cs" />
+    <Compile Remove="Migrations\20190513171126_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513171509_Metrics.cs" />
+    <Compile Remove="Migrations\20190513171509_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513172433_Metrics.cs" />
+    <Compile Remove="Migrations\20190513172433_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513172749_Metrics.cs" />
+    <Compile Remove="Migrations\20190513172749_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513193329_Metrics.cs" />
+    <Compile Remove="Migrations\20190513193329_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513193654_Metrics.cs" />
+    <Compile Remove="Migrations\20190513193654_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513200239_Metrics.cs" />
+    <Compile Remove="Migrations\20190513200239_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513200613_Metrics.cs" />
+    <Compile Remove="Migrations\20190513200613_Metrics.Designer.cs" />
+    <Compile Remove="Migrations\20190513200812_Metrics.cs" />
+    <Compile Remove="Migrations\20190513200812_Metrics.Designer.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.SmartEnum" Version="1.0.8" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
+    <PackageReference Include="MailKit" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="RestSharp" Version="106.6.9" />
+  </ItemGroup>
+
+</Project>

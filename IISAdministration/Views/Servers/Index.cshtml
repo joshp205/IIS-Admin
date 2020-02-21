@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Servers";
+    List<Server> servers = ViewBag.Servers;
+}
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <h4>Servers</h4>
+    </div>
+    @if (servers.Count == 0)
+    {
+        <div class="row">
+            <h6>No servers found!</h6>
+        </div>
+        <div class="row">
+            <a class="btn btn-primary" asp-area="" asp-controller="Servers" asp-action="Add">Add new server</a>
+        </div>
+    }
+    else
+    {
+        <div class="row no-gutters">
+            <div class="col-sm-5"><strong>Display Name</strong></div>
+            <div class="col-sm-6"><strong>URL</strong></div>
+            <div class="col-sm-1"></div>
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach (Server server in servers)
+            {
+                <li class="list-group-item" style="padding-left:0; padding-right:0;">
+                    <div class="row no-gutters">
+                        <div class="col-sm-5">@Html.ActionLink(server.Name, "Server", new { id = server.ServerId })</div>
+                        <div class="col-sm-6"><a href="@server.Url">@server.Url</a></div>
+                        <div class="col-sm-1" style="text-align:right;">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"></button>
+                                <div class="dropdown-menu">
+                                    @Html.ActionLink("Edit", "Edit", "Servers", new { id = server.ServerId }, new { @class = "dropdown-item" })
+                                    @Html.ActionLink("Remove", "Remove", "Servers", new { id = server.ServerId }, new { @class = "dropdown-item" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+</div>

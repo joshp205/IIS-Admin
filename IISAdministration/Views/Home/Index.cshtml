@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="col-12">
+    <h4>@ViewData["Title"]</h4>
+</div>
+<hr />
+<div class="col-12">
+    <div class="row">
+        <div class="col-sm-6" style="padding:0px 3px 3px 0px;">
+            <div class="card">
+                <div class="card-header">
+                    Memory
+                </div>
+                <div class="card-body">
+                    <canvas id="memoryChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="padding:0px 0px 3px 3px;">
+            <div class="card">
+                <div class="card-header">
+                    CPU
+                </div>
+                <div class="card-body">
+                    <canvas id="cpuChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" style="padding:0px 3px 3px 0px;">
+            <div class="card">
+                <div class="card-header">
+                    Requests
+                </div>
+                <div class="card-body">
+                    <canvas id="requestsChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="padding:0px 0px 3px 3px;">
+            <div class="card">
+                <div class="card-header">
+                    Network
+                </div>
+                <div class="card-body">
+                    <canvas id="networkChart" width="500" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+@section Scripts {
+    <script type="text/javascript">
+        // Put vars here..
+    </script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/chartjs/Chart.js"></script>
+    <script src="~/js/poll_main.js"></script>
+}
